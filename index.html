@@ -3,127 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlexRelNet | Lightweight Medical AI</title>
+    <title>FlexRelNet | Medical AI That Runs Anywhere</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Fraunces:opsz,wght@9..144,400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #0a0a0f;
-            --bg-dark: #12121a;
-            --purple-dark: #1a1a2e;
-            --purple-mid: #4a3f6b;
-            --purple-light: #7b68a6;
-            --purple-glow: #9d8ec9;
-            --cyan-accent: #64ffda;
-            --pink-accent: #ff6b9d;
-            --blue-accent: #6b9dff;
-            --yellow-accent: #ffd700;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0b0;
-            --text-muted: #6b6b7b;
+            --bg: #fafaf8;
+            --bg-warm: #f5f3ef;
+            --bg-card: #ffffff;
+            --surface: #eeecea;
+            --text: #1a1a1a;
+            --text-secondary: #5a5a5a;
+            --text-muted: #8a8a8a;
+            --teal: #0d9488;
+            --teal-light: #ccfbf1;
+            --teal-dark: #0a7a70;
+            --coral: #e8553a;
+            --coral-light: #fef2f0;
+            --navy: #1e293b;
+            --border: #e2e0dc;
+            --border-light: #f0eeea;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--bg-deep);
-            color: var(--text-primary);
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .galaxy-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: 
-                radial-gradient(ellipse at 20% 20%, rgba(106, 90, 205, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(147, 112, 219, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(75, 0, 130, 0.08) 0%, transparent 70%),
-                linear-gradient(180deg, var(--bg-deep) 0%, #0d0d15 50%, var(--bg-dark) 100%);
-        }
-
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle var(--duration) ease-in-out infinite;
-            opacity: var(--opacity);
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: var(--opacity); transform: scale(1); }
-            50% { opacity: calc(var(--opacity) * 0.3); transform: scale(0.8); }
-        }
-
+        /* ─── NAV ─── */
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
-            padding: 1.5rem 5%;
+            padding: 0 5%;
+            height: 64px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(250, 250, 248, 0.85);
+            backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid var(--border-light);
         }
 
         .logo {
-            font-family: 'Space Mono', monospace;
-            font-size: 1.5rem;
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--cyan-accent), var(--purple-glow));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--navy);
+            letter-spacing: -0.5px;
         }
+        .logo span { color: var(--teal); }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 400;
-            transition: color 0.3s ease;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text); }
+
+        .nav-cta {
+            padding: 0.5rem 1.2rem;
+            background: var(--teal);
+            color: white !important;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            font-size: 0.85rem !important;
+            transition: background 0.2s, transform 0.2s !important;
+        }
+        .nav-cta:hover { background: var(--teal-dark); transform: translateY(-1px); }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+        }
+        .hamburger span {
+            width: 22px; height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--cyan-accent);
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 64px; left: 0; right: 0;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 5%;
+            z-index: 999;
+        }
+        .mobile-menu.open { display: block; }
+        .mobile-menu a {
+            display: block;
+            padding: 0.7rem 0;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border-light);
         }
 
+        /* ─── HERO ─── */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -131,1108 +127,1406 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 8rem 5% 4rem;
+            padding: 7rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
         }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%; right: -20%;
+            width: 700px; height: 700px;
+            background: radial-gradient(circle, rgba(13,148,136,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%; left: -15%;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(232,85,58,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            background: var(--teal-light);
+            border: 1px solid rgba(13,148,136,0.2);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--teal-dark);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--teal); border-radius: 50%; }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
             font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease forwards;
+            line-height: 1.12;
+            margin-bottom: 1.2rem;
+            color: var(--navy);
+            letter-spacing: -1px;
+            animation: fadeInUp 0.6s ease 0.1s forwards;
+            opacity: 0;
+            max-width: 800px;
         }
 
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--cyan-accent), var(--purple-glow), var(--pink-accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero h1 em {
+            font-style: normal;
+            color: var(--teal);
         }
 
-        .hero p {
+        .hero > p {
             font-size: 1.15rem;
             color: var(--text-secondary);
-            max-width: 700px;
+            max-width: 600px;
             margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease 0.2s forwards;
+            animation: fadeInUp 0.6s ease 0.2s forwards;
             opacity: 0;
         }
 
-        /* Model Size Comparison Banner */
-        .size-comparison {
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.6s ease 0.3s forwards;
+            opacity: 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 0.85rem 2rem;
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--teal);
+            color: white;
+            box-shadow: 0 4px 14px rgba(13,148,136,0.3);
+        }
+        .btn-primary:hover {
+            background: var(--teal-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(13,148,136,0.35);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:hover {
+            border-color: var(--teal);
+            background: var(--teal-light);
+        }
+
+        /* ─── PROOF BAR ─── */
+        .proof-bar {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 1.5rem 2.5rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            margin-bottom: 3rem;
-            animation: fadeInUp 0.8s ease 0.3s forwards;
+            gap: 3rem;
+            padding: 1rem 0;
+            animation: fadeInUp 0.6s ease 0.4s forwards;
             opacity: 0;
             flex-wrap: wrap;
         }
 
-        .size-item {
+        .proof-item {
             text-align: center;
         }
 
-        .size-item.dim .size-value {
-            color: var(--text-muted);
-        }
-
-        .size-item.highlight .size-value {
-            color: var(--cyan-accent);
-        }
-
-        .size-value {
-            font-family: 'Space Mono', monospace;
-            font-size: 1.8rem;
+        .proof-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.6rem;
             font-weight: 700;
+            color: var(--navy);
         }
 
-        .size-label {
-            font-size: 0.8rem;
+        .proof-label {
+            font-size: 0.78rem;
             color: var(--text-muted);
+            margin-top: 0.15rem;
         }
 
-        .size-arrow {
-            color: var(--purple-glow);
-            font-size: 1.5rem;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            animation: fadeInUp 0.8s ease 0.4s forwards;
+        /* ─── COMPARISON STRIP ─── */
+        .comparison-strip {
+            max-width: 700px;
+            margin: 2rem auto 0;
+            animation: fadeInUp 0.6s ease 0.5s forwards;
             opacity: 0;
         }
 
-        .stat-card {
-            padding: 1.8rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+        .strip-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 0;
         }
 
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(100, 255, 218, 0.3);
+        .strip-bar-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
-        .stat-value {
-            font-family: 'Space Mono', monospace;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--cyan-accent);
-            margin-bottom: 0.5rem;
+        .strip-bar-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
         }
 
-        .stat-label {
-            font-size: 0.8rem;
+        .strip-label {
+            font-size: 0.78rem;
             color: var(--text-muted);
+            min-width: 100px;
+            text-align: right;
         }
 
-        section {
-            padding: 6rem 5%;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3.5rem;
-        }
-
-        .section-tag {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--cyan-accent);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 0.8rem;
-        }
-
-        .section-title {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+        .strip-bar {
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            padding: 0 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
             font-weight: 600;
-            margin-bottom: 0.8rem;
+            color: white;
+            transition: width 1.5s ease;
         }
 
+        .strip-bar.baseline {
+            background: var(--surface);
+            color: var(--text-muted);
+            width: 100%;
+        }
+
+        .strip-bar.flex {
+            background: linear-gradient(135deg, var(--teal), #0fb9a9);
+            width: 2.4%;
+            min-width: 90px;
+        }
+
+        .strip-context {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* ─── SECTIONS ─── */
+        section { padding: 5.5rem 5%; }
+
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+        .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.5px;
+        }
         .section-subtitle {
             font-size: 1rem;
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 560px;
             margin: 0 auto;
         }
 
-        /* Cost Section */
-        .cost-section {
-            background: linear-gradient(180deg, transparent 0%, rgba(100, 255, 218, 0.05) 50%, transparent 100%);
+        /* ─── IMPACT NUMBERS ─── */
+        .impact-section {
+            background: var(--navy);
+            color: white;
+            border-radius: 0;
+            margin: 0 -5%;
+            padding: 5rem 10%;
         }
 
-        .cost-comparison {
+        .impact-section .section-tag { color: rgba(255,255,255,0.5); }
+        .impact-section .section-title { color: white; }
+        .impact-section .section-subtitle { color: rgba(255,255,255,0.6); }
+
+        .impact-grid {
             display: grid;
-            grid-template-columns: 1fr auto 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            align-items: center;
             max-width: 900px;
             margin: 0 auto;
         }
 
-        .cost-box {
-            padding: 2.5rem;
-            border-radius: 20px;
+        .impact-card {
             text-align: center;
+            padding: 2rem;
         }
 
-        .cost-box.old {
-            background: rgba(255, 107, 157, 0.1);
-            border: 1px solid rgba(255, 107, 157, 0.2);
-        }
-
-        .cost-box.new {
-            background: rgba(100, 255, 218, 0.1);
-            border: 1px solid rgba(100, 255, 218, 0.3);
-        }
-
-        .cost-box h3 {
-            font-size: 1rem;
-            color: var(--text-secondary);
+        .impact-icon {
+            font-size: 2rem;
             margin-bottom: 1rem;
         }
 
-        .cost-box .cost-value {
-            font-family: 'Space Mono', monospace;
-            font-size: 3rem;
+        .impact-stat {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.2rem;
             font-weight: 700;
+            color: #5eead4;
+            margin-bottom: 0.3rem;
         }
 
-        .cost-box.old .cost-value {
-            color: var(--pink-accent);
+        .impact-desc {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.5;
         }
 
-        .cost-box.new .cost-value {
-            color: var(--cyan-accent);
+        .impact-source {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.35);
+            margin-top: 0.4rem;
+            font-style: italic;
         }
 
-        .cost-box .cost-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-        }
-
-        .cost-arrow {
-            font-size: 3rem;
-            color: var(--purple-glow);
-        }
-
-        .cost-table {
-            max-width: 700px;
-            margin: 3rem auto 0;
-        }
-
-        .cost-table table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .cost-table th, .cost-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.9rem;
-        }
-
-        .cost-table th {
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .cost-table .old-val {
-            color: var(--text-muted);
-        }
-
-        .cost-table .new-val {
-            color: var(--cyan-accent);
-            font-weight: 600;
-        }
-
-        /* Use Cases Section */
-        .usecase-section {
-            background: linear-gradient(180deg, transparent 0%, rgba(74, 63, 107, 0.1) 50%, transparent 100%);
-        }
-
-        .usecase-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .usecase-card {
-            padding: 2.5rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .usecase-card:hover {
-            transform: translateY(-8px);
-        }
-
-        .usecase-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .usecase-location {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--cyan-accent);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-        }
-
-        .usecase-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .usecase-card p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        .usecase-specs {
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .usecase-specs span {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            background: rgba(100, 255, 218, 0.1);
-            border-radius: 20px;
-            font-size: 0.75rem;
-            color: var(--cyan-accent);
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Problem Section */
+        /* ─── PROBLEM ─── */
         .problem-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
+            gap: 1.5rem;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .problem-card {
             padding: 2rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
-            transition: transform 0.3s ease;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-
         .problem-card:hover {
-            transform: translateY(-8px);
-        }
-
-        .problem-card::before {
-            content: '';
-            display: block;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--pink-accent), var(--purple-glow));
-            border-radius: 3px;
-            margin-bottom: 1.5rem;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
         }
 
         .problem-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+            margin-bottom: 0.7rem;
+            color: var(--navy);
         }
-
         .problem-card p {
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.7;
+            font-size: 0.88rem;
+            line-height: 1.6;
         }
 
-        .source {
-            margin-top: 1rem;
-            font-size: 0.75rem;
+        .problem-card .source-cite {
+            margin-top: 0.8rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
             font-style: italic;
         }
 
-        /* Solution Section */
-        .solution-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .architecture-diagram {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 2rem;
-        }
-
-        .arch-node {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.9rem 1.2rem;
-            background: rgba(100, 255, 218, 0.1);
-            border: 1px solid rgba(100, 255, 218, 0.3);
-            border-radius: 10px;
-            margin-bottom: 0.6rem;
-        }
-
-        .arch-node-icon {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--cyan-accent);
-            color: var(--bg-deep);
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.8rem;
-        }
-
-        .arch-node-title {
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-
-        .arch-node-desc {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-        }
-
-        .arch-arrow {
-            text-align: center;
-            color: var(--purple-glow);
-            font-size: 1rem;
-            margin: 0.2rem 0;
-        }
-
-        .solution-text h3 {
-            font-size: 1.4rem;
+        .problem-accent {
+            width: 32px; height: 3px;
+            background: var(--coral);
+            border-radius: 3px;
             margin-bottom: 1.2rem;
         }
 
-        .feature-list {
-            list-style: none;
+        /* ─── HOW IT WORKS ─── */
+        .how-section { background: var(--bg-warm); }
+
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .feature-list li {
+        .how-step {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            position: relative;
+        }
+
+        .how-number {
+            width: 40px; height: 40px;
+            margin: 0 auto 1rem;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            justify-content: center;
+            background: var(--teal);
+            color: white;
+            border-radius: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
             font-size: 0.9rem;
         }
 
-        .feature-list li::before {
-            content: '✓';
-            color: var(--cyan-accent);
-            font-weight: 700;
+        .how-step h3 {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+        }
+        .how-step p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
         }
 
-        .feature-note {
-            font-size: 0.75rem;
+        /* arrow between steps */
+        .how-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -1rem;
+            top: 1.8rem;
             color: var(--text-muted);
-            margin-top: 1.2rem;
-            padding: 0.8rem;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 8px;
+            font-size: 1.1rem;
         }
 
-        /* Tables */
-        .comparison-table, .results-table {
+        /* ─── RESULTS ─── */
+        .results-wrapper {
             max-width: 900px;
             margin: 0 auto;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .comparison-table table, .results-table table {
+        .results-table-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .results-table-container table {
             width: 100%;
             border-collapse: collapse;
         }
 
-        .comparison-table th, .results-table th {
-            padding: 1rem;
-            background: rgba(100, 255, 218, 0.1);
+        .results-table-container th {
+            padding: 0.9rem 1rem;
+            background: var(--navy);
+            color: white;
             font-weight: 600;
             text-align: left;
+            font-size: 0.82rem;
+        }
+
+        .results-table-container td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border-light);
             font-size: 0.85rem;
         }
 
-        .comparison-table td, .results-table td {
-            padding: 0.9rem 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.85rem;
-        }
+        .results-table-container tr:last-child td { border-bottom: none; }
+        .results-table-container tr:hover td { background: rgba(13,148,136,0.03); }
 
-        .comparison-table tr:last-child td, .results-table tr:last-child td {
-            border-bottom: none;
-        }
+        .result-positive { color: var(--teal); font-weight: 600; }
+        .result-neutral { color: var(--text-secondary); }
+        .result-negative { color: var(--coral); }
+        .result-highlight { color: var(--teal); font-weight: 700; }
 
-        .highlight { color: var(--cyan-accent); font-weight: 600; }
-        .dim { color: var(--text-muted); }
-        .positive { color: var(--cyan-accent); }
-        .negative { color: var(--pink-accent); }
-        .neutral { color: var(--text-secondary); }
-
-        .results-note {
-            max-width: 900px;
-            margin: 1.5rem auto 0;
-            padding: 1.2rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-        }
-
-        .highlight-box {
-            max-width: 900px;
-            margin: 1.5rem auto 0;
-            padding: 1.2rem;
-            background: rgba(100, 255, 218, 0.05);
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            border-radius: 12px;
-        }
-
-        .highlight-box h4 {
-            color: var(--cyan-accent);
-            margin-bottom: 0.4rem;
-            font-size: 0.95rem;
-        }
-
-        .highlight-box p {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-
-        /* Roadmap Section */
-        .roadmap-section {
-            background: linear-gradient(180deg, transparent 0%, rgba(107, 157, 255, 0.05) 50%, transparent 100%);
-        }
-
-        .roadmap-timeline {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .roadmap-timeline::before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 15%;
-            right: 15%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--cyan-accent), var(--purple-glow), var(--pink-accent));
-        }
-
-        .roadmap-step {
-            text-align: center;
-            position: relative;
-        }
-
-        .roadmap-number {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--bg-deep);
-            border: 2px solid var(--cyan-accent);
-            border-radius: 50%;
-            font-family: 'Space Mono', monospace;
-            font-weight: 700;
-            color: var(--cyan-accent);
-            position: relative;
-            z-index: 1;
-        }
-
-        .roadmap-step h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .roadmap-step p {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            line-height: 1.6;
-        }
-
-        .roadmap-step .phase-tag {
-            font-family: 'Space Mono', monospace;
+        .result-note {
             font-size: 0.7rem;
             color: var(--text-muted);
-            margin-bottom: 0.3rem;
+            display: block;
+            margin-top: 0.15rem;
         }
 
-        /* Footer */
-        footer {
-            padding: 4rem 5%;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-family: 'Space Mono', monospace;
-            font-size: 1.3rem;
+        .avg-row td {
+            background: var(--teal-light) !important;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--cyan-accent), var(--purple-glow));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1.5rem;
         }
 
-        .footer-cta {
+        .results-callout {
             display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 2rem;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
             flex-wrap: wrap;
         }
 
-        .footer-btn {
-            padding: 0.9rem 2rem;
+        .callout-card {
+            flex: 1;
+            min-width: 250px;
+            padding: 1.3rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            background: var(--bg-card);
+        }
+
+        .callout-card.success {
+            border-color: rgba(13,148,136,0.3);
+            background: rgba(13,148,136,0.04);
+        }
+
+        .callout-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            color: var(--navy);
+        }
+
+        .callout-card p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .results-fine-print {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--bg-warm);
             border-radius: 10px;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-        }
-
-        .footer-btn.primary {
-            background: linear-gradient(135deg, var(--cyan-accent), var(--blue-accent));
-            color: var(--bg-deep);
-            border: none;
-        }
-
-        .footer-btn.primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
-        }
-
-        .footer-btn.secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .footer-btn.secondary:hover {
-            border-color: var(--cyan-accent);
-            background: rgba(100, 255, 218, 0.1);
-        }
-
-        .footer-text {
+            font-size: 0.78rem;
             color: var(--text-muted);
-            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
+        /* ─── COMPARISON TABLE ─── */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .spec-card {
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .spec-card h3 {
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.85rem;
+        }
+        .spec-row:last-child { border-bottom: none; }
+        .spec-label { color: var(--text-secondary); }
+        .spec-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            color: var(--navy);
+        }
+        .spec-value.teal { color: var(--teal); }
+
+        /* ─── USE CASES ─── */
+        .usecase-section { background: var(--bg-warm); }
+
+        .usecase-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .usecase-card {
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .usecase-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .usecase-icon {
+            width: 48px; height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--teal-light);
+            border-radius: 12px;
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .usecase-location {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .usecase-card h3 { font-size: 1.05rem; margin-bottom: 0.6rem; color: var(--navy); }
+        .usecase-card > p { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; }
+
+        .usecase-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 1.2rem;
+        }
+
+        .usecase-tag {
+            padding: 0.25rem 0.6rem;
+            background: var(--teal-light);
+            border-radius: 6px;
+            font-size: 0.72rem;
+            color: var(--teal-dark);
+            font-weight: 500;
+        }
+
+        .usecase-status {
+            margin-top: 0.6rem;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* ─── COST ─── */
+        .cost-visual {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .cost-box {
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+        .cost-box.old {
+            background: var(--coral-light);
+            border: 1px solid rgba(232,85,58,0.15);
+        }
+        .cost-box.new {
+            background: var(--teal-light);
+            border: 1px solid rgba(13,148,136,0.2);
+        }
+        .cost-box h3 { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.8rem; }
+        .cost-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+        .cost-box.old .cost-number { color: var(--coral); }
+        .cost-box.new .cost-number { color: var(--teal); }
+        .cost-box .cost-desc { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.5rem; }
+        .cost-arrow-icon { font-size: 2rem; color: var(--text-muted); }
+
+        .cost-table-wrap {
             max-width: 700px;
             margin: 0 auto;
-            line-height: 1.7;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
         }
 
-        /* Responsive */
+        .cost-table-wrap table { width: 100%; border-collapse: collapse; }
+        .cost-table-wrap th {
+            padding: 0.8rem 1rem;
+            background: var(--bg-warm);
+            font-weight: 600;
+            text-align: left;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+        .cost-table-wrap td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.85rem;
+        }
+        .cost-table-wrap tr:last-child td { border-bottom: none; }
+        .cost-old { color: var(--text-muted); }
+        .cost-new { color: var(--teal); font-weight: 600; }
+        .cost-note {
+            font-size: 0.7rem;
+            color: var(--coral);
+            display: block;
+            margin-top: 0.15rem;
+        }
+
+        /* ─── TRANSPARENCY SECTION (replaces "Limitations") ─── */
+        .transparency-section { background: var(--bg-warm); }
+
+        .transparency-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .transparency-card {
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .transparency-icon {
+            width: 32px; height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(232,85,58,0.08);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .transparency-card h4 {
+            font-size: 0.88rem;
+            margin-bottom: 0.3rem;
+            color: var(--navy);
+        }
+        .transparency-card p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ─── ROADMAP ─── */
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .roadmap-card {
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .roadmap-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--teal), #0fb9a9);
+        }
+
+        .roadmap-phase {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-card h3 { font-size: 1.05rem; margin-bottom: 0.6rem; color: var(--navy); }
+        .roadmap-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+
+        /* ─── CTA SECTION ─── */
+        .cta-section {
+            background: var(--navy);
+            text-align: center;
+            padding: 5rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -20%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(94,234,212,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-section h2 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: white;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.5px;
+        }
+
+        .cta-section p {
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn-primary {
+            padding: 0.9rem 2.2rem;
+            background: #5eead4;
+            color: var(--navy);
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .cta-btn-primary:hover { background: #99f6e4; transform: translateY(-2px); }
+
+        .cta-btn-ghost {
+            padding: 0.9rem 2.2rem;
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .cta-btn-ghost:hover { border-color: #5eead4; background: rgba(94,234,212,0.1); }
+
+        /* ─── FOOTER ─── */
+        footer {
+            padding: 3rem 5%;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-brand .logo { margin-bottom: 0.5rem; }
+        .footer-brand p { font-size: 0.82rem; color: var(--text-muted); max-width: 300px; }
+
+        .footer-disclaimer-box {
+            max-width: 500px;
+            padding: 1rem;
+            background: rgba(232,85,58,0.04);
+            border: 1px solid rgba(232,85,58,0.12);
+            border-radius: 10px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .footer-disclaimer-box strong {
+            display: block;
+            margin-bottom: 0.2rem;
+            color: var(--coral);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-bottom {
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-light);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* ─── RESPONSIVE ─── */
         @media (max-width: 1024px) {
-            .hero-stats { grid-template-columns: repeat(2, 1fr); }
-            .problem-grid, .usecase-grid, .roadmap-timeline { grid-template-columns: repeat(2, 1fr); }
-            .solution-content { grid-template-columns: 1fr; }
-            .cost-comparison { grid-template-columns: 1fr; gap: 1rem; }
-            .cost-arrow { transform: rotate(90deg); }
-            .roadmap-timeline::before { display: none; }
+            .impact-grid { grid-template-columns: repeat(2, 1fr); }
+            .problem-grid { grid-template-columns: repeat(2, 1fr); }
+            .how-grid { grid-template-columns: repeat(2, 1fr); }
+            .how-step::after { display: none; }
+            .usecase-grid { grid-template-columns: repeat(2, 1fr); }
+            .spec-grid { grid-template-columns: 1fr; }
+            .cost-visual { grid-template-columns: 1fr; gap: 1rem; }
+            .cost-arrow-icon { transform: rotate(90deg); text-align: center; }
+            .transparency-grid { grid-template-columns: 1fr; }
+            .roadmap-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero-stats, .problem-grid, .usecase-grid, .roadmap-timeline { grid-template-columns: 1fr; }
-            .comparison-table, .results-table { overflow-x: auto; }
-            .size-comparison { flex-direction: column; gap: 0.5rem; }
-            .size-arrow { transform: rotate(90deg); }
+            .hamburger { display: flex; }
+            .impact-grid, .problem-grid, .usecase-grid { grid-template-columns: 1fr; }
+            .how-grid { grid-template-columns: 1fr; }
+            .proof-bar { gap: 1.5rem; }
+            .results-table-container { overflow-x: auto; }
+            section { padding: 4rem 5%; }
         }
 
+        /* ─── ANIMATIONS ─── */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
         }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
-    <div class="galaxy-bg"></div>
-    <div class="stars" id="stars"></div>
 
     <nav>
-        <div class="logo">FlexRelNet</div>
+        <div class="logo">Flex<span>Rel</span>Net</div>
         <ul class="nav-links">
-            <li><a href="#cost">Cost</a></li>
-            <li><a href="#usecases">Use Cases</a></li>
-            <li><a href="#solution">Solution</a></li>
+            <li><a href="#problem">Problem</a></li>
+            <li><a href="#solution">How It Works</a></li>
             <li><a href="#results">Results</a></li>
+            <li><a href="#usecases">Use Cases</a></li>
+            <li><a href="#cost">Economics</a></li>
             <li><a href="#roadmap">Roadmap</a></li>
+            <li><a href="https://mail.google.com/mail/?view=cm&to=soncwnetp@gmail.com&su=FlexRelNet%20Pilot%20Partnership" target="_blank" class="nav-cta">Partner With Us</a></li>
         </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
     </nav>
 
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#problem" onclick="closeMenu()">Problem</a>
+        <a href="#solution" onclick="closeMenu()">How It Works</a>
+        <a href="#results" onclick="closeMenu()">Results</a>
+        <a href="#usecases" onclick="closeMenu()">Use Cases</a>
+        <a href="#cost" onclick="closeMenu()">Economics</a>
+        <a href="#roadmap" onclick="closeMenu()">Roadmap</a>
+        <a href="https://mail.google.com/mail/?view=cm&to=soncwnetp@gmail.com&su=FlexRelNet%20Pilot%20Partnership" target="_blank" onclick="closeMenu()">Partner With Us →</a>
+    </div>
+
+    <!-- ─── HERO ─── -->
     <section class="hero">
-        <h1>Lightweight <span>Medical AI</span></h1>
-        <p>CNN-GNN hybrid that runs on $35 hardware. Fully offline. Validated on 5 medical imaging datasets.</p>
-        
-        <!-- Model Size Comparison -->
-        <div class="size-comparison">
-            <div class="size-item dim">
-                <div class="size-value">97MB</div>
-                <div class="size-label">ResNet-50</div>
+        <div class="hero-badge">Research Prototype · Validated on 5 Datasets</div>
+        <h1>Medical AI that fits in <em>10 kilobytes</em></h1>
+        <p>A CNN-GNN hybrid designed for clinics without GPUs, reliable power, or internet. Runs on a $35 Raspberry Pi. Offline. Under 1ms inference.</p>
+
+        <div class="hero-ctas">
+            <a href="https://mail.google.com/mail/?view=cm&to=soncwnetp@gmail.com&su=FlexRelNet%20Pilot%20Partnership" target="_blank" class="btn btn-primary">Start a Pilot Partnership →</a>
+            <a href="#results" class="btn btn-secondary">See the Results</a>
+        </div>
+
+        <div class="proof-bar">
+            <div class="proof-item">
+                <div class="proof-value">10,338</div>
+                <div class="proof-label">Parameters</div>
             </div>
-            <div class="size-arrow">→</div>
-            <div class="size-item dim">
-                <div class="size-value">500MB+</div>
-                <div class="size-label">VGG-16</div>
+            <div class="proof-item">
+                <div class="proof-value">0.75ms</div>
+                <div class="proof-label">CPU Inference</div>
             </div>
-            <div class="size-arrow">→</div>
-            <div class="size-item highlight">
-                <div class="size-value">10.1KB</div>
-                <div class="size-label">FlexRelNet</div>
+            <div class="proof-item">
+                <div class="proof-value">40.7×</div>
+                <div class="proof-label">Smaller than baseline</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-value">−0.91%</div>
+                <div class="proof-label">Avg accuracy trade-off</div>
             </div>
         </div>
-        
-        <div class="hero-stats">
-            <div class="stat-card">
-                <div class="stat-value">~40x</div>
-                <div class="stat-label">Parameter reduction</div>
+
+        <div class="comparison-strip">
+            <div class="strip-bar-container">
+                <div class="strip-bar-wrapper">
+                    <span class="strip-label">CNN Baseline</span>
+                    <div class="strip-bar baseline">411 KB · 420K params</div>
+                </div>
+                <div class="strip-bar-wrapper">
+                    <span class="strip-label">FlexRelNet</span>
+                    <div class="strip-bar flex">10.1 KB</div>
+                </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-value">0.75ms</div>
-                <div class="stat-label">CPU inference</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">0.91%</div>
-                <div class="stat-label">Avg accuracy diff</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">&lt;$50</div>
-                <div class="stat-label">Deployment cost</div>
-            </div>
+            <p class="strip-context">INT8 quantized · Compared to equivalent-depth custom CNN (3 conv layers). General-purpose models (ResNet-50: 97MB) serve different tasks.</p>
         </div>
     </section>
 
-    <!-- Cost Section -->
-    <section class="cost-section" id="cost">
+    <!-- ─── IMPACT CONTEXT ─── -->
+    <div class="impact-section">
+        <div class="section-header">
+            <div class="section-tag">The Problem</div>
+            <h2 class="section-title">3.5 Billion People Lack Basic Diagnostics</h2>
+            <p class="section-subtitle">AI can detect pneumonia, cancer, and TB — but only where GPUs and specialists already exist</p>
+        </div>
+        <div class="impact-grid">
+            <div class="impact-card reveal">
+                <div class="impact-stat">700K+</div>
+                <div class="impact-desc">Children die from pneumonia annually — most preventable with early detection</div>
+                <div class="impact-source">UNICEF, 2023</div>
+            </div>
+            <div class="impact-card reveal">
+                <div class="impact-stat">&lt;1:100K</div>
+                <div class="impact-desc">Radiologist-to-population ratio in many low-income countries</div>
+                <div class="impact-source">Lancet Commission on Diagnostics, 2021</div>
+            </div>
+            <div class="impact-card reveal">
+                <div class="impact-stat">$5,000+</div>
+                <div class="impact-desc">Minimum hardware cost for conventional medical AI deployment</div>
+                <div class="impact-source">GPU server + infrastructure</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── PROBLEM ─── -->
+    <section id="problem">
         <div class="section-header reveal">
-            <div class="section-tag">Economics</div>
-            <h2 class="section-title">Structural Cost Reduction</h2>
-            <p class="section-subtitle">From thousands of dollars to under $50 per screening station</p>
+            <div class="section-tag">Why Current AI Fails</div>
+            <h2 class="section-title">Built for Hospitals, Not Clinics</h2>
         </div>
-
-        <div class="cost-comparison reveal">
-            <div class="cost-box old">
-                <h3>Conventional Medical AI</h3>
-                <div class="cost-value">$5,000+</div>
-                <div class="cost-desc">GPU server + technical staff + infrastructure</div>
+        <div class="problem-grid">
+            <div class="problem-card reveal">
+                <div class="problem-accent"></div>
+                <h3>Too Large</h3>
+                <p>ResNet-50 needs 97MB. VGG-16 exceeds 500MB. These don't fit on the $35 devices that rural clinics can afford.</p>
             </div>
-            <div class="cost-arrow">→</div>
-            <div class="cost-box new">
-                <h3>FlexRelNet</h3>
-                <div class="cost-value">&lt;$50</div>
-                <div class="cost-desc">Raspberry Pi + offline operation</div>
+            <div class="problem-card reveal">
+                <div class="problem-accent"></div>
+                <h3>Too Dependent</h3>
+                <p>GPU servers, stable electricity, high-bandwidth internet, on-site engineers. Solar clinics with intermittent mobile signal are excluded by design.</p>
             </div>
-        </div>
-
-        <div class="cost-table reveal">
-            <table>
-                <tr>
-                    <th>Category</th>
-                    <th>Conventional</th>
-                    <th>FlexRelNet</th>
-                </tr>
-                <tr>
-                    <td>Hardware</td>
-                    <td class="old-val">$5,000+ GPU server</td>
-                    <td class="new-val">$35 Raspberry Pi</td>
-                </tr>
-                <tr>
-                    <td>Technical Staff</td>
-                    <td class="old-val">Required on-site</td>
-                    <td class="new-val">Not required</td>
-                </tr>
-                <tr>
-                    <td>Power</td>
-                    <td class="old-val">Grid connection</td>
-                    <td class="new-val">Battery / Solar</td>
-                </tr>
-                <tr>
-                    <td>Connectivity</td>
-                    <td class="old-val">High-bandwidth internet</td>
-                    <td class="new-val">Fully offline</td>
-                </tr>
-                <tr>
-                    <td>Maintenance</td>
-                    <td class="old-val">Ongoing contracts</td>
-                    <td class="new-val">Minimal</td>
-                </tr>
-            </table>
+            <div class="problem-card reveal">
+                <div class="problem-accent"></div>
+                <h3>Too Expensive</h3>
+                <p>A single screening station costs thousands. For a rural health ministry with 50 clinics to equip, this is not a budget line item — it's impossible.</p>
+            </div>
         </div>
     </section>
 
-    <!-- Use Cases Section -->
+    <!-- ─── HOW IT WORKS ─── -->
+    <section class="how-section" id="solution">
+        <div class="section-header reveal">
+            <div class="section-tag">Architecture</div>
+            <h2 class="section-title">How FlexRelNet Works</h2>
+            <p class="section-subtitle">CNN feature extraction + Sparse Graph Neural Network for relational reasoning</p>
+        </div>
+        <div class="how-grid reveal">
+            <div class="how-step">
+                <div class="how-number">1</div>
+                <h3>CNN Encoder</h3>
+                <p>2 conv layers (16→32 channels) compress a 28×28 image to a 7×7 feature map with 49 spatial nodes</p>
+            </div>
+            <div class="how-step">
+                <div class="how-number">2</div>
+                <h3>Sparse Graph Attention</h3>
+                <p>Top-k=8 sparsification retains only the 8 most relevant connections per node (392 of 2,401 possible edges)</p>
+            </div>
+            <div class="how-step">
+                <div class="how-number">3</div>
+                <h3>GNN Reasoning</h3>
+                <p>2 GNN layers propagate context across the sparse graph with residual connections + LayerNorm</p>
+            </div>
+            <div class="how-step">
+                <div class="how-number">4</div>
+                <h3>Classification</h3>
+                <p>Global mean pooling → FC(64) → Output. Relational patterns preserved through the entire pipeline</p>
+            </div>
+        </div>
+
+        <div class="spec-grid" style="margin-top: 3rem;">
+            <div class="spec-card reveal">
+                <h3>📐 Model Specs</h3>
+                <div class="spec-row">
+                    <span class="spec-label">Parameters</span>
+                    <span class="spec-value teal">10,338</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Model Size (FP32)</span>
+                    <span class="spec-value">40.4 KB</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Model Size (INT8)</span>
+                    <span class="spec-value teal">10.1 KB</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Peak Memory</span>
+                    <span class="spec-value">0.09 MB</span>
+                </div>
+            </div>
+            <div class="spec-card reveal">
+                <h3>⚡ Performance</h3>
+                <div class="spec-row">
+                    <span class="spec-label">Single Inference</span>
+                    <span class="spec-value teal">0.75 ms</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Throughput</span>
+                    <span class="spec-value">4,252 img/s</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">vs CNN Baseline</span>
+                    <span class="spec-value teal">2.37× faster</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Benchmark</span>
+                    <span class="spec-value" style="font-size: 0.75rem;">Xeon @ 2.2GHz, Colab</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── RESULTS ─── -->
+    <section id="results">
+        <div class="section-header reveal">
+            <div class="section-tag">Validation</div>
+            <h2 class="section-title">Results Across 5 Medical Imaging Datasets</h2>
+            <p class="section-subtitle">3-run mean ± std · Seeds: 42, 123, 456 · MedMNIST benchmark (28×28px)</p>
+        </div>
+
+        <div class="results-wrapper">
+            <div class="results-table-container reveal">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dataset</th>
+                            <th>Modality</th>
+                            <th>CNN Baseline</th>
+                            <th>FlexRelNet</th>
+                            <th>Diff</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PneumoniaMNIST</td>
+                            <td>Chest X-ray</td>
+                            <td>85.42 ± 2.57%</td>
+                            <td class="result-highlight">88.41 ± 1.07%</td>
+                            <td class="result-positive">+2.99%</td>
+                        </tr>
+                        <tr>
+                            <td>ChestMNIST</td>
+                            <td>Chest X-ray</td>
+                            <td>53.22 ± 0.09%</td>
+                            <td>53.16 ± 0.01%</td>
+                            <td class="result-neutral">−0.06%<span class="result-note">14-label exact-match accuracy</span></td>
+                        </tr>
+                        <tr>
+                            <td>DermaMNIST</td>
+                            <td>Dermoscopy</td>
+                            <td>74.11 ± 0.79%</td>
+                            <td>71.90 ± 0.29%</td>
+                            <td class="result-neutral">−2.21%</td>
+                        </tr>
+                        <tr>
+                            <td>BreastMNIST</td>
+                            <td>Ultrasound</td>
+                            <td>76.71 ± 4.69%</td>
+                            <td>73.08 ± 0.00%</td>
+                            <td class="result-negative">−3.63%<span class="result-note">546 training samples — both models unstable</span></td>
+                        </tr>
+                        <tr>
+                            <td>BloodMNIST</td>
+                            <td>Microscopy</td>
+                            <td>91.22 ± 0.57%</td>
+                            <td>89.57 ± 0.14%</td>
+                            <td class="result-neutral">−1.65%</td>
+                        </tr>
+                        <tr class="avg-row">
+                            <td><strong>Average</strong></td>
+                            <td></td>
+                            <td><strong>76.14%</strong></td>
+                            <td><strong>75.22%</strong></td>
+                            <td><strong>−0.91%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="results-callout">
+                <div class="callout-card success reveal">
+                    <h4>🎯 PneumoniaMNIST: FlexRelNet wins</h4>
+                    <p>+2.99% higher accuracy with lower variance (±1.07% vs ±2.57%). Graph attention provides genuine accuracy benefit for pneumonia detection, not just compression.</p>
+                </div>
+                <div class="callout-card reveal">
+                    <h4>📊 4 of 5 datasets within target</h4>
+                    <p>≤3% accuracy loss target met on 4/5 datasets. BreastMNIST exception driven by dataset size (546 samples), not architecture limitation.</p>
+                </div>
+            </div>
+
+            <div class="results-fine-print reveal">
+                <strong>Methodology:</strong> MedMNIST benchmark (Yang et al., 2023) at 28×28px. CNN baseline: custom 3-conv-layer architecture (420K params). Both trained from scratch with identical hyperparameters (Adam, lr=1e-3, 10 epochs, batch=64). Clinical X-rays are typically 1024×1024+ — full-resolution testing is planned. These are retrospective benchmarks; prospective clinical validation is required before deployment.
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── USE CASES ─── -->
     <section class="usecase-section" id="usecases">
         <div class="section-header reveal">
-            <div class="section-tag">Use Cases</div>
-            <h2 class="section-title">Who Uses This, Where, How</h2>
-            <p class="section-subtitle">FlexRelNet brings technology to patients, not patients to technology</p>
+            <div class="section-tag">Designed For</div>
+            <h2 class="section-title">Bringing Diagnostics to the Patient</h2>
+            <p class="section-subtitle">Target deployment scenarios — field pilots planned</p>
         </div>
 
         <div class="usecase-grid">
             <div class="usecase-card reveal">
                 <div class="usecase-icon">📱</div>
-                <div class="usecase-location">Rural Tanzania</div>
+                <div class="usecase-location">Target: Rural Tanzania</div>
                 <h3>Mobile Skin Screening</h3>
-                <p>Community health worker visits villages without electricity. Takes photo of skin lesion using smartphone. Receives risk assessment in milliseconds. No internet required.</p>
-                <div class="usecase-specs">
-                    <span>Smartphone</span>
-                    <span>Offline</span>
-                    <span>2-4ms inference</span>
+                <p>Community health workers visit villages without electricity. Smartphone photo → risk assessment in milliseconds. No internet needed for initial triage.</p>
+                <div class="usecase-tags">
+                    <span class="usecase-tag">Smartphone</span>
+                    <span class="usecase-tag">Offline</span>
+                    <span class="usecase-tag">2–4ms est.</span>
                 </div>
+                <p class="usecase-status">Field pilot planned</p>
             </div>
             <div class="usecase-card reveal">
                 <div class="usecase-icon">🏥</div>
-                <div class="usecase-location">Northern Kenya</div>
-                <h3>Solar Clinic Pneumonia Screening</h3>
-                <p>Clinic has X-ray machine but nearest radiologist is 6 hours away. FlexRelNet on $35 Raspberry Pi analyzes images on-site. High-risk cases referred immediately.</p>
-                <div class="usecase-specs">
-                    <span>Raspberry Pi 4</span>
-                    <span>$35 hardware</span>
-                    <span>Solar powered</span>
+                <div class="usecase-location">Target: Northern Kenya</div>
+                <h3>Solar Clinic X-ray Screening</h3>
+                <p>Clinics with X-ray equipment but no radiologist. FlexRelNet on a $35 Raspberry Pi analyzes images on-site. High-risk cases get immediate referral.</p>
+                <div class="usecase-tags">
+                    <span class="usecase-tag">Raspberry Pi 4</span>
+                    <span class="usecase-tag">$35 hardware</span>
+                    <span class="usecase-tag">Solar</span>
                 </div>
+                <p class="usecase-status">Hardware testing planned (Phase 1)</p>
             </div>
             <div class="usecase-card reveal">
                 <div class="usecase-icon">🚢</div>
-                <div class="usecase-location">Indonesia Islands</div>
+                <div class="usecase-location">Target: Indonesia Islands</div>
                 <h3>Mobile Unit Dermatology</h3>
-                <p>Monthly visits to remote islands. Previously, suspicious cases waited months for capital appointment. Now, health worker identifies urgent referrals on the spot.</p>
-                <div class="usecase-specs">
-                    <span>Laptop</span>
-                    <span>4,252 img/s</span>
-                    <span>Batch screening</span>
+                <p>Monthly health unit visits to remote islands. Identify urgent referrals vs. local monitoring. 4,252 img/s throughput enables batch screening.</p>
+                <div class="usecase-tags">
+                    <span class="usecase-tag">Laptop</span>
+                    <span class="usecase-tag">4,252 img/s</span>
+                    <span class="usecase-tag">Batch</span>
                 </div>
+                <p class="usecase-status">Pilot planned</p>
             </div>
         </div>
     </section>
 
-    <!-- Problem Section -->
-    <section id="problem">
+    <!-- ─── COST ─── -->
+    <section id="cost">
         <div class="section-header reveal">
-            <div class="section-tag">Problem</div>
-            <h2 class="section-title">Why Current Medical AI Doesn't Reach</h2>
+            <div class="section-tag">Economics</div>
+            <h2 class="section-title">From $5,000 to Under $50</h2>
+            <p class="section-subtitle">Designed to run on hardware health ministries can actually afford</p>
         </div>
 
-        <div class="problem-grid">
-            <div class="problem-card reveal">
-                <h3>Model Size Barrier</h3>
-                <p>ResNet-50: 97MB. VGG-16: 500MB+. These sizes prevent deployment on low-cost edge devices that rural clinics can afford.</p>
+        <div class="cost-visual reveal">
+            <div class="cost-box old">
+                <h3>Conventional Medical AI</h3>
+                <div class="cost-number">$5,000+</div>
+                <div class="cost-desc">GPU server + staff + infrastructure</div>
             </div>
-            <div class="problem-card reveal">
-                <h3>Infrastructure Requirements</h3>
-                <p>GPU servers, stable electricity, high-bandwidth internet, technical staff. Solar-powered clinics with intermittent connectivity are excluded.</p>
-            </div>
-            <div class="problem-card reveal">
-                <h3>Diagnostic Access Gap</h3>
-                <p>Nearly half the global population lacks access to basic diagnostics. Radiologist ratio below 1:100,000 in many low-income countries.</p>
-                <p class="source">Lancet Commission on Diagnostics, 2021</p>
+            <div class="cost-arrow-icon">→</div>
+            <div class="cost-box new">
+                <h3>FlexRelNet Target</h3>
+                <div class="cost-number">&lt;$50</div>
+                <div class="cost-desc">Raspberry Pi + offline · Hardware testing pending</div>
             </div>
         </div>
-    </section>
 
-    <!-- Solution Section -->
-    <section id="solution">
-        <div class="section-header reveal">
-            <div class="section-tag">Solution</div>
-            <h2 class="section-title">FlexRelNet Architecture</h2>
-            <p class="section-subtitle">CNN + Sparse Graph Neural Network</p>
-        </div>
-
-        <div class="solution-content">
-            <div class="architecture-diagram reveal">
-                <div class="arch-node">
-                    <div class="arch-node-icon">1</div>
-                    <div>
-                        <div class="arch-node-title">CNN Encoder</div>
-                        <div class="arch-node-desc">2 conv layers (16, 32 ch) → 7×7×32</div>
-                    </div>
-                </div>
-                <div class="arch-arrow">↓</div>
-                <div class="arch-node">
-                    <div class="arch-node-icon">2</div>
-                    <div>
-                        <div class="arch-node-title">Sparse Graph Attention</div>
-                        <div class="arch-node-desc">49 nodes, top-k=8 (392 edges)</div>
-                    </div>
-                </div>
-                <div class="arch-arrow">↓</div>
-                <div class="arch-node">
-                    <div class="arch-node-icon">3</div>
-                    <div>
-                        <div class="arch-node-title">GNN Layers ×2</div>
-                        <div class="arch-node-desc">Message passing + LayerNorm</div>
-                    </div>
-                </div>
-                <div class="arch-arrow">↓</div>
-                <div class="arch-node">
-                    <div class="arch-node-icon">4</div>
-                    <div>
-                        <div class="arch-node-title">Classifier</div>
-                        <div class="arch-node-desc">Global pooling → FC(64) → Output</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="solution-text reveal">
-                <h3>Measured Specifications</h3>
-                <ul class="feature-list">
-                    <li>10,338 parameters (vs 420,994 baseline)</li>
-                    <li>40.4 KB model (FP32), 10.1 KB (INT8)</li>
-                    <li>0.75 ms CPU inference</li>
-                    <li>4,252 images/second throughput</li>
-                    <li>0.09 MB peak inference memory</li>
-                </ul>
-                <div class="feature-note">
-                    <strong>Benchmark:</strong> Google Colab CPU (Intel Xeon @ 2.20GHz). GPU: Tesla T4. Results: 3-run mean ± std.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Comparison Section -->
-    <section id="comparison">
-        <div class="section-header reveal">
-            <div class="section-tag">Comparison</div>
-            <h2 class="section-title">FlexRelNet vs CNN Baseline</h2>
-        </div>
-
-        <div class="comparison-table reveal">
+        <div class="cost-table-wrap reveal">
             <table>
                 <thead>
                     <tr>
-                        <th>Metric</th>
-                        <th>CNN Baseline</th>
+                        <th>Category</th>
+                        <th>Conventional</th>
                         <th>FlexRelNet</th>
-                        <th>Ratio</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Parameters</td>
-                        <td class="dim">420,994</td>
-                        <td class="highlight">10,338</td>
-                        <td>40.7x smaller</td>
+                        <td>Hardware</td>
+                        <td class="cost-old">$5,000+ GPU server</td>
+                        <td class="cost-new">$35 Raspberry Pi<span class="cost-note">ARM testing pending</span></td>
                     </tr>
                     <tr>
-                        <td>Model Size (INT8)</td>
-                        <td class="dim">411 KB</td>
-                        <td class="highlight">10.1 KB</td>
-                        <td>40.7x smaller</td>
+                        <td>Technical Staff</td>
+                        <td class="cost-old">Required on-site</td>
+                        <td class="cost-new">Minimal</td>
                     </tr>
                     <tr>
-                        <td>CPU Inference</td>
-                        <td class="dim">0.92 ms</td>
-                        <td class="highlight">0.75 ms</td>
-                        <td>1.23x faster</td>
+                        <td>Power</td>
+                        <td class="cost-old">Grid connection</td>
+                        <td class="cost-new">Battery / Solar</td>
                     </tr>
                     <tr>
-                        <td>Throughput</td>
-                        <td class="dim">1,796 img/s</td>
-                        <td class="highlight">4,252 img/s</td>
-                        <td>2.37x higher</td>
+                        <td>Connectivity</td>
+                        <td class="cost-old">High-bandwidth internet</td>
+                        <td class="cost-new">Fully offline</td>
                     </tr>
                     <tr>
-                        <td>GPU Training Memory</td>
-                        <td class="dim">54.31 MB</td>
-                        <td class="highlight">32.70 MB</td>
-                        <td>1.66x less</td>
+                        <td>Maintenance</td>
+                        <td class="cost-old">Ongoing contracts</td>
+                        <td class="cost-new">Minimal</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <!-- Results Section -->
-    <section id="results">
+    <!-- ─── TRANSPARENCY ─── -->
+    <section class="transparency-section" id="transparency">
         <div class="section-header reveal">
-            <div class="section-tag">Results</div>
-            <h2 class="section-title">Accuracy on MedMNIST Datasets</h2>
-            <p class="section-subtitle">3-run mean ± std (seeds: 42, 123, 456)</p>
+            <div class="section-tag">What We Don't Know Yet</div>
+            <h2 class="section-title">Current Limitations</h2>
+            <p class="section-subtitle">Transparency builds better partnerships than overclaiming</p>
         </div>
 
-        <div class="results-table reveal">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Dataset</th>
-                        <th>Modality</th>
-                        <th>CNN Baseline</th>
-                        <th>FlexRelNet</th>
-                        <th>Diff</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>PneumoniaMNIST</td>
-                        <td>Chest X-ray</td>
-                        <td>85.42 ± 2.57%</td>
-                        <td class="highlight">88.41 ± 1.07%</td>
-                        <td class="positive">+2.99%</td>
-                    </tr>
-                    <tr>
-                        <td>ChestMNIST</td>
-                        <td>Chest X-ray</td>
-                        <td>53.22 ± 0.09%</td>
-                        <td>53.16 ± 0.01%</td>
-                        <td class="neutral">-0.06%</td>
-                    </tr>
-                    <tr>
-                        <td>DermaMNIST</td>
-                        <td>Dermoscopy</td>
-                        <td>74.11 ± 0.79%</td>
-                        <td>71.90 ± 0.29%</td>
-                        <td class="neutral">-2.21%</td>
-                    </tr>
-                    <tr>
-                        <td>BreastMNIST</td>
-                        <td>Ultrasound</td>
-                        <td>76.71 ± 4.69%</td>
-                        <td>73.08 ± 0.00%</td>
-                        <td class="negative">-3.63%</td>
-                    </tr>
-                    <tr>
-                        <td>BloodMNIST</td>
-                        <td>Microscopy</td>
-                        <td>91.22 ± 0.57%</td>
-                        <td>89.57 ± 0.14%</td>
-                        <td class="neutral">-1.65%</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Average</strong></td>
-                        <td></td>
-                        <td><strong>76.14%</strong></td>
-                        <td><strong>75.22%</strong></td>
-                        <td><strong>-0.91%</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="highlight-box reveal">
-            <h4>PneumoniaMNIST: FlexRelNet outperforms CNN</h4>
-            <p>+2.99% higher accuracy with lower variance (±1.07% vs ±2.57%). Graph attention benefits binary classification with sufficient training data.</p>
-        </div>
-
-        <div class="results-note reveal">
-            <strong>Notes:</strong> 4/5 datasets met ≤3% target. BreastMNIST (-3.63%) has only 546 training samples; CNN baseline itself shows high variance (±4.69%). Datasets: MedMNIST (Yang et al., 2023).
+        <div class="transparency-grid">
+            <div class="transparency-card reveal">
+                <div class="transparency-icon">📋</div>
+                <div>
+                    <h4>Retrospective Data Only</h4>
+                    <p>All validation uses public benchmarks. Real clinical images vary in quality and acquisition. Field performance is unconfirmed.</p>
+                </div>
+            </div>
+            <div class="transparency-card reveal">
+                <div class="transparency-icon">🔍</div>
+                <div>
+                    <h4>28×28px Resolution</h4>
+                    <p>Clinical images are 1024×1024+. Higher-resolution testing is planned for future work.</p>
+                </div>
+            </div>
+            <div class="transparency-card reveal">
+                <div class="transparency-icon">🔧</div>
+                <div>
+                    <h4>ARM / RPi Unconfirmed</h4>
+                    <p>CPU benchmarks ran on x86 (Intel Xeon). Raspberry Pi compatibility is estimated, not tested.</p>
+                </div>
+            </div>
+            <div class="transparency-card reveal">
+                <div class="transparency-icon">📉</div>
+                <div>
+                    <h4>Small Dataset Limitation</h4>
+                    <p>Underperforms with &lt;1,000 training samples (BreastMNIST: −3.63%). GNN needs sufficient data for relational learning.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Roadmap Section -->
-    <section class="roadmap-section" id="roadmap">
+    <!-- ─── ROADMAP ─── -->
+    <section id="roadmap">
         <div class="section-header reveal">
-            <div class="section-tag">Roadmap</div>
-            <h2 class="section-title">Deployment Plan</h2>
+            <div class="section-tag">What's Next</div>
+            <h2 class="section-title">Deployment Roadmap</h2>
+            <p class="section-subtitle">From technical validation to scaled clinical deployment</p>
         </div>
 
-        <div class="roadmap-timeline">
-            <div class="roadmap-step reveal">
-                <div class="roadmap-number">1</div>
-                <div class="phase-tag">Technical Validation</div>
+        <div class="roadmap-grid">
+            <div class="roadmap-card reveal">
+                <div class="roadmap-phase">Phase 1 · Technical Validation</div>
                 <h3>Device Testing</h3>
-                <p>Deploy on Raspberry Pi 4 and Android. Measure actual ARM performance. Validate on locally acquired images.</p>
+                <p>Deploy on Raspberry Pi 4 and Android. Measure actual ARM performance. Validate accuracy on locally acquired images.</p>
             </div>
-            <div class="roadmap-step reveal">
-                <div class="roadmap-number">2</div>
-                <div class="phase-tag">Clinical Pilot</div>
+            <div class="roadmap-card reveal">
+                <div class="roadmap-phase">Phase 2 · Clinical Pilot</div>
                 <h3>Field Deployment</h3>
-                <p>2-3 clinics in Southeast Asia and East Africa. 10,000 screenings target. Health worker feedback integration.</p>
+                <p>2–3 clinics each in Southeast Asia and East Africa. 10,000 screenings target. Health worker feedback + specialist confirmation.</p>
             </div>
-            <div class="roadmap-step reveal">
-                <div class="roadmap-number">3</div>
-                <div class="phase-tag">Scale</div>
-                <h3>Expanded Deployment</h3>
-                <p>20+ clinics across multiple countries. Add disease categories. Publish clinical validation results.</p>
+            <div class="roadmap-card reveal">
+                <div class="roadmap-phase">Phase 3 · Scale</div>
+                <h3>Expanded Rollout</h3>
+                <p>20+ clinics across multiple countries. Add TB and dermatology. Publish peer-reviewed clinical validation.</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-logo">FlexRelNet</div>
-        
-        <div class="footer-cta">
-            <a href="https://mail.google.com/mail/?view=cm&to=soncwnetp@gmail.com&su=FlexRelNet%20Pilot%20Partnership" target="_blank" class="footer-btn primary">Contact for Pilot Partnership</a>
+    <!-- ─── CTA ─── -->
+    <section class="cta-section">
+        <h2>Ready to pilot FlexRelNet in your network?</h2>
+        <p>We're seeking health ministries, NGOs, and research partners for Phase 1 device testing and Phase 2 clinical pilots.</p>
+        <div class="cta-btns">
+            <a href="https://mail.google.com/mail/?view=cm&to=soncwnetp@gmail.com&su=FlexRelNet%20Pilot%20Partnership" target="_blank" class="cta-btn-primary">Start a Conversation →</a>
+            <a href="#results" class="cta-btn-ghost">Review the Data</a>
         </div>
-        
-        <p class="footer-text">
-            CNN-GNN hybrid for medical image classification. Benchmarks: Google Colab (CPU: Intel Xeon @ 2.20GHz, GPU: Tesla T4). Results: 3-run mean ± std. Raspberry Pi compatibility estimated; actual ARM testing recommended.
-        </p>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="logo">Flex<span>Rel</span>Net</div>
+                <p>CNN-GNN hybrid for resource-limited medical AI deployment. Open-source research prototype.</p>
+            </div>
+            <div class="footer-disclaimer-box">
+                <strong>⚠ Important Disclaimer</strong>
+                FlexRelNet is a research prototype — not an approved medical device. It has not received FDA, CE, or equivalent regulatory approval. All performance figures are from retrospective public benchmarks (MedMNIST, 28×28px). Raspberry Pi/Android figures are estimated from x86 benchmarks. Prospective clinical validation is required before any patient care use. This is a screening support tool designed to assist, not replace, clinical judgment.
+            </div>
+        </div>
+        <div class="footer-bottom">
+            Benchmarks: Google Colab (CPU: Intel Xeon @ 2.20GHz · GPU: Tesla T4) · 3-run mean ± std (seeds 42, 123, 456) · MedMNIST (Yang et al., 2023)
+        </div>
     </footer>
 
     <script>
-        const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
-            star.style.setProperty('--opacity', Math.random() * 0.5 + 0.3);
-            starsContainer.appendChild(star);
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+        }
+        function closeMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
         }
 
+        // Scroll reveal
         const reveals = document.querySelectorAll('.reveal');
         const revealOnScroll = () => {
             reveals.forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                if (el.getBoundingClientRect().top < window.innerHeight - 80) {
                     el.classList.add('active');
                 }
             });
@@ -1240,10 +1534,14 @@
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
 
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
+                const target = this.getAttribute('href');
+                if (!target || target === '#') return;
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+                closeMenu();
+                document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' });
             });
         });
     </script>
